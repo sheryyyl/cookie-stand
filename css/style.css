@@ -8,6 +8,12 @@
     color: #333333;
 }
 
+.t-header {
+    padding: 35px 0;
+    display: grid;
+    place-items: center;
+}
+
 h1 {
     font-family: 'Righteous', sans-serif;
     color: #faa07c;
@@ -30,7 +36,7 @@ img {
 nav {
     background-color: #FFA07A;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 .container {
@@ -39,7 +45,6 @@ nav {
     padding: 20px;
     background-color: #fff;
     color: #000;
-    border-radius: 8px;
 }
 
 nav a {
@@ -52,6 +57,10 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.container section {
+    padding: 15px;
+
+}
 
 .footer {
     background-color: #dcdcdc;
@@ -89,4 +98,28 @@ nav a:hover {
 .footer .row a i {
     font-size: 2em;
     margin: 0% 1%;
+}
+
+/* laboratorio07 */
+.sales {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+
+}
+
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+    text-align: center;
 }

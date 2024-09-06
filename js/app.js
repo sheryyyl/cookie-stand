@@ -1,98 +1,89 @@
 'use strict';
-const seattle = {
-    location: "seattle",
-    minConsumidoresPorHora: 23,
-    maxConsumidorePorHora: 65,
-    promedioGalletasPorPersona: 6.3,
-    galletasVendidasPorHora: [],
-    vender: function () {
-        this.galletasVendidasPorHora = estimarVentas(this);
-    }
+
+function Tienda(location, minConsumidoresPorHora, maxConsumidoresPorHora, promedioGalletasPorPersona) {
+    this.location = location;
+    this.minConsumidoresPorHora = minConsumidoresPorHora;
+    this.maxConsumidoresPorHora = maxConsumidoresPorHora;
+    this.promedioGalletasPorPersona = promedioGalletasPorPersona;
+    this.galletasVendidasPorHora = [];
 }
-const tokyo = {
-    location: "tokyo",
-    minConsumidoresPorHora: 3,
-    maxConsumidorePorHora: 24,
-    promedioGalletasPorPersona: 1.2,
-    galletasVendidasPorHora: [],
-    vender: function () {
-        this.galletasVendidasPorHora = estimarVentas(this);
-    }
-}
-const dubai = {
-    location: "dubai",
-    minConsumidoresPorHora: 11,
-    maxConsumidorePorHora: 38,
-    promedioGalletasPorPersona: 3.7,
-    galletasVendidasPorHora: [],
-    vender: function () {
-        this.galletasVendidasPorHora = estimarVentas(this);
-    }
-}
-const paris = {
-    location: "paris",
-    minConsumidoresPorHora: 20,
-    maxConsumidorePorHora: 38,
-    promedioGalletasPorPersona: 2.3,
-    galletasVendidasPorHora: [],
-    vender: function () {
-        this.galletasVendidasPorHora = estimarVentas(this);
-    }
-}
-const lima = {
-    location: "lima",
-    minConsumidoresPorHora: 2,
-    maxConsumidorePorHora: 16,
-    promedioGalletasPorPersona: 4.6,
-    galletasVendidasPorHora: [],
-    vender: function () {
-        this.galletasVendidasPorHora = estimarVentas(this);
-    }
-}
+
+Tienda.prototype.vender = function () {
+    this.galletasVendidasPorHora = estimarVentas(this);
+};
+
 const horasAtencion = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-const tiendas = [seattle, tokyo, dubai, paris, lima];
+const tiendas = [
+    new Tienda('seattle', 23, 65, 6.3),
+    new Tienda('tokyo', 3, 24, 1.2),
+    new Tienda('dubai', 11, 38, 3.7),
+    new Tienda('paris', 20, 38, 2.3),
+    new Tienda('lima', 2, 16, 4.6)
+];
+
 function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
+
 function estimarVentas(tienda) {
     const sale = [];
     for (let i = 0; i < horasAtencion.length; i++) {
-        const numeroConsumidores = random(tienda.minConsumidoresPorHora, tienda.maxConsumidorePorHora);
+        const numeroConsumidores = random(tienda.minConsumidoresPorHora, tienda.maxConsumidoresPorHora);
         const ventaPorHora = Math.ceil(numeroConsumidores * tienda.promedioGalletasPorPersona);
         sale.push(ventaPorHora);
-        console.log(sale);
     }
     return sale;
 }
-function mostrarVentas(tienda) {
-    let totalGalletasDelDia = 0
+
+function mostrarTablaVentas(tiendas) {
     const root = document.getElementById('root');
-    const location = document.createElement('section');
-    location.classList.add('location');
-    root.appendChild(location);
-    const title = document.createElement('h2');
-    title.textContent = tienda.location;
-    location.appendChild(title);
-    const lista = document.createElement('ul');
-    location.appendChild(lista);
-    for (let i = 0; i < horasAtencion.length; i++) {
-        const listItem = document.createElement('li');
-        listItem.textContent = horasAtencion[i] + ':' + tienda.galletasVendidasPorHora[i] + 'galletas';
-        lista.appendChild(listItem);
-        totalGalletasDelDia += tienda.galletasVendidasPorHora[i];
-    }
-    const ventaTotal = document.createElement('li');
-    ventaTotal.textContent = 'total de galletas del dia:' + totalGalletasDelDia + 'galletas';
-    lista.appendChild(ventaTotal);
+    const table = document.createElement('table');
+    root.appendChild(table);
+
+    const encabezado = document.createElement('tr');
+    table.appendChild(encabezado);
+
+    const encabeVacio = document.createElement('th');
+    encabezado.appendChild(encabeVacio);
+
+    horasAtencion.forEach(hora => {
+        const horaHeader = document.createElement('th');
+        horaHeader.textContent = hora;
+        encabezado.appendChild(horaHeader);
+    });
+
+    const totalHeader = document.createElement('th');
+    totalHeader.textContent = 'Total del día';
+    encabezado.appendChild(totalHeader);
+
+    tiendas.forEach(tienda => {
+        const contentTienda = document.createElement('tr');
+        table.appendChild(contentTienda);
+
+        const locationGalletas = document.createElement('td');
+        locationGalletas.textContent = tienda.location;
+        contentTienda.appendChild(locationGalletas);
+
+        let totalGalletasDelDia = 0;
+
+        tienda.galletasVendidasPorHora.forEach(venta => {
+            const ventasGalletas = document.createElement('td');
+            ventasGalletas.textContent = venta;
+            contentTienda.appendChild(ventasGalletas);
+            totalGalletasDelDia += venta;
+        });
+
+        const totalGalletas = document.createElement('td');
+        totalGalletas.textContent = totalGalletasDelDia;
+        contentTienda.appendChild(totalGalletas);
+    });
 }
-function correModelo() {
-    for (let i = 0; i < tiendas.length; i++) {
-        tiendas[i].vender();
-        mostrarVentas(tiendas[i]);
-    }
+
+function EjecTabla() {
+    tiendas.forEach(tienda => {
+        tienda.vender();
+    });
+    mostrarTablaVentas(tiendas);
 }
-correModelo();
-for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    
-}
+
+EjecTabla();
