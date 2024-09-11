@@ -56,10 +56,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.container section {
-    padding: 15px;
-
-}
 
 .footer {
     background-color: #dcdcdc;
@@ -121,4 +117,15 @@ td {
     padding: 12px 15px;
     border: 1px solid #dddddd;
     text-align: center;
+}
+/* laboratorio 08 */
+.store {
+    padding: 15px;
+    margin-bottom: 10px;
+
+}
+.store h2 {
+    margin-top: 0;
+    font-size: 25px;
+    font-weight: bold;
 }
