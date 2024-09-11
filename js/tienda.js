@@ -22,41 +22,41 @@ tiendas.push(seatle, tokyo, dubai, paris, lima);
 function mostrarTiendas(store) {
     const sucursales = document.getElementById('sucursales');
     
-    // Crear una sección para cada tienda
+
     const local = document.createElement('section');
-    local.classList.add('store'); // Añadir una clase CSS opcional
+    local.classList.add('store'); 
     
-    // Añadir nombre de la tienda
+
     const nombreTienda = document.createElement('h2');
     nombreTienda.textContent = store.name;
     local.appendChild(nombreTienda);
 
-    // Añadir dirección
+
     const direccionTienda = document.createElement('p');
     direccionTienda.textContent = "Dirección: " + store.direccion;
     local.appendChild(direccionTienda);
 
-    // Añadir horario
+
     const horarioTienda = document.createElement('p');
     horarioTienda.textContent = "Horario: " + store.horario;
     local.appendChild(horarioTienda);
 
-    // Añadir teléfono
+
     const telefonoTienda = document.createElement('p');
     telefonoTienda.textContent = "Teléfono: " + store.telefono;
     local.appendChild(telefonoTienda);
 
-    // Añadir email
+
     const emailTienda = document.createElement('p');
     emailTienda.textContent = "Email: " + store.email;
     local.appendChild(emailTienda);
 
-    // Añadir aforo
+
     const aforoTienda = document.createElement('p');
     aforoTienda.textContent = "Aforo: " + store.aforo;
     local.appendChild(aforoTienda);
 
-    // Añadir la tienda al contenedor principal
+
     sucursales.appendChild(local);
 }
 
