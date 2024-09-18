@@ -24,26 +24,27 @@
         </nav>
     </header>
     <main>
-        <section class="container table">
+        <section class="container">
             <form id="add-location">
                 <fieldset>
                     <legend>Agregar una nueva tienda</legend>
+                    
                     <label for="location">Ingrese la tienda:</label>
-                    <input id="location" type="text" placeholder="Ingrese la tienda:"> </input>
-
-                    <label for="minConsumidoresPorHora">Ingrese el numero minimo de consumidores:</label>
-                    <input id="minConsumidoresPorHora" type="number" placeholder="Minimo de consumidores"> </input>
-
-                    <label for="maxConsumidoresPorHora">Ingrese el numero máximo de consumidores:</label>
-                    <input id="maxConsumidoresPorHora" type="number" placeholder="Maximo de consumidores"> </input>
-
+                    <input id="location" type="text" placeholder="Ingrese la tienda" required />
+        
+                    <label for="minConsumidoresPorHora">Ingrese el número mínimo de consumidores:</label>
+                    <input id="minConsumidoresPorHora" type="number" placeholder="Mínimo de consumidores" required />
+        
+                    <label for="maxConsumidoresPorHora">Ingrese el número máximo de consumidores:</label>
+                    <input id="maxConsumidoresPorHora" type="number" placeholder="Máximo de consumidores" required />
+        
                     <label for="promedioGalletasPorPersona">Ingrese el promedio de galletas consumidas:</label>
-                    <input id="promedioGalletasPorPersona" type="number" placeholder="Promedio de galletas consumidas"> </input>
-
+                    <input id="promedioGalletasPorPersona" type="number" placeholder="Promedio de galletas consumidas" required />
+        
                     <button type="submit">Agregar tienda</button>
                 </fieldset>
             </form>
-            <section id="root"></section>
+            <section class="table" id="root"></section>
         </section>
         
     </main>
