@@ -109,6 +109,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 430px;
 }
 
 
@@ -128,4 +129,61 @@ td {
     margin-top: 0;
     font-size: 25px;
     font-weight: bold;
+}
+
+
+/* laboratorio10 */
+form {
+
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-size: 1em;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #484848;
 }
