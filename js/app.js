@@ -20,6 +20,8 @@ const tiendas = [
     new Tienda('paris', 20, 38, 2.3),
     new Tienda('lima', 2, 16, 4.6)
 ];
+const formElement = document.getElementById("add-location");
+const footerTabla = document.createElement('tfoot');
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -78,7 +80,30 @@ function mostrarTablaVentas(tiendas) {
         contentTienda.appendChild(totalGalletas);
     });
 }
+function hadleForm(e) {
+    e.preventDefault();
+    const loc = e.target.location.value;
+    const min = parseInt(e.target.minConsumidoresPorHora.value);
+    const max = parseInt(e.target.maxConsumidoresPorHora.value);
+    const prom = parseFloat(e.target.promedioGalletasPorPersona.value);
+    console.log(e);
+    console.log(loc);
+    console.log(min);
+    console.log(max);
+    console.log(prom);
+    const newTienda = new Tienda (loc, min, max, prom);
+    tiendas.push(newTienda);
+    console.log(tiendas);
 
+    e.target.location.value=null;
+    e.target.minConsumidoresPorHora.value=null;
+    e.target.maxConsumidoresPorHora.value=null;
+    e.target.promedioGalletasPorPersona.value=null;
+
+    footerTabla.innerHTML=' ';
+    newTienda.vender();
+    mostrarTablaVentas(tiendas);  
+}
 function EjecTabla() {
     tiendas.forEach(tienda => {
         tienda.vender();
@@ -87,3 +112,4 @@ function EjecTabla() {
 }
 
 EjecTabla();
+formElement.addEventListener('submit', hadleForm);
